@@ -225,6 +225,38 @@ public class MyLinkedList<T>{
         }
     }
 
+    public T get(int i) {
+        checkPositionIndex(i);
+        return node(i).theItem;
+    }
+
+    public T set(int i, T t) {
+        checkPositionIndex(i);
+        Node<T> node = node(i);
+        T oldItem = node.theItem;
+        node.theItem = t;
+        return oldItem;
+    }
+
+    public void add(int index, T t) {
+        checkPositionIndex(index);
+        Node<T> node = node(index);
+        if(index == theSize) {
+            linkLast(t);
+        }else{
+            Node<T> prev = node.prev;
+            Node<T> temp = new Node<>(t, prev, node);
+            node.prev = temp;
+            if(prev == null) {
+                first = temp;
+            } else {
+                prev.next = temp;
+            }
+        }
+        modCount ++;
+        theSize ++;
+    }
+
     public T getFirst(){
         Node<T> f = first;
         if(f == null){
@@ -255,6 +287,35 @@ public class MyLinkedList<T>{
             throw new NoSuchElementException();
         }
         return unLink(l);
+    }
+
+    public int size() {return theSize;}
+
+    public boolean contains(T t) {return indexOf(t) != -1;}
+
+    public boolean add(T t) {
+        linkLast(t);
+        return true;
+    }
+
+    public boolean remove(T t) {
+
+        if(t == null) {
+            for(Node<T> node = first;node != null;node = node.next) {
+                if(node.theItem == null) {
+                    unLink(node);
+                    return true;
+                }
+            }
+        } else {
+            for(Node<T> node = first; node != null; node = node.next) {
+                if(node.next == t) {
+                    unLink(node);
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     private void linkFirst(T t){

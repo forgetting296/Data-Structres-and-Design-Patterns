@@ -156,6 +156,7 @@ public class MyAVLTree <T extends Comparable<? super T>> {
         }else if(compareResulr < 0){
             node.left = remove(t,node.left);
         }else if(node.left != null && node.right != null){
+            //找到被删除节点的子树下最小的元素来代替　　然后递归删除那个最小元素的节点
             node.element = findMin(node).element;
             node.right = remove(node.element,node.right);
         }else{
