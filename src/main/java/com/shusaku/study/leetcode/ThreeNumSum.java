@@ -51,6 +51,44 @@ public class ThreeNumSum {
         return result;
     }
 
+    private List<List<Integer>> threeSum3(int[] sum) {
+        List<List<Integer>> result = new ArrayList<>();
+        if(sum == null || sum.length < 3) {
+            return result;
+        }
+        int len = sum.length;
+        Arrays.sort(sum);
+        for(int i = 0;i < len;i ++) {
+            if(sum[i] > 0) {
+                break;
+            }
+            if(i > 0 && sum[i] == sum[i + 1]) {
+                continue;
+            }
+            int l = i + 1;
+            int r = len -1;
+            while(l < r) {
+                int num = sum[i] + sum[l] + sum[r];
+                if(num == 0) {
+                    result.add(Arrays.asList(i,l,r));
+                    while(l < r && sum[l] == sum[l ++]) {
+                        l ++;
+                    }
+                    while(l < r && sum[r] == sum[r --]) {
+                        r --;
+                    }
+                    l ++;
+                    r --;
+                } else if (num > 0) {
+                    r --;
+                } else {
+                    l ++;
+                }
+            }
+        }
+        return result;
+    }
+
     //这种方式不行  无法去重
     public List<List<Integer>> threeSum2(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
