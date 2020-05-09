@@ -76,7 +76,7 @@ public class SingletonTest {
         return instance;
     }
 
-    //双重校验同步锁机制  只有在ｉｎｓｔａｎｃｅ未被实例化的时候　才会被同步锁锁住
+    //双重校验同步锁机制  只有在ｉｎｓｔａｎｃｅ未被实例化的时候　才会被同步锁锁住　　但是这种方式　instance对象必须加volatile关键字　保证线程之间的可见性和禁止指令重排序
     public static SingletonTest getInstance3() {
 
         if(instance == null) {
