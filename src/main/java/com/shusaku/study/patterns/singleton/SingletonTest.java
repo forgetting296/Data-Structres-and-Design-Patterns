@@ -42,7 +42,7 @@ public class SingletonTest {
         IntStream
                 .range(0,10)
                 .filter(i -> i %2 == 0)
-                .forEach(i -> System.out.println(i));
+                .forEach(System.out::println);
     }
 
     private SingletonTest() {
