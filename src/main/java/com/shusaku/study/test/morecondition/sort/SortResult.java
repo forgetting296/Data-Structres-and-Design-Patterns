@@ -13,7 +13,7 @@ public class SortResult {
 
     public static void main(String[] args) {
         List<SortConditionEntity> list = new ArrayList<>();
-        String entities="[{\"year\":\"2017\",\"month\":10,\"count\":47},{\"year\":2017,\"month\":12,\"count\":4},{\"year\":2018,\"month\":11,\"count\":2},{\"year\":2017,\"month\":10,\"count\":2},{\"year\":2016,\"month\":12,\"count\":2},{\"year\":2016,\"month\":01,\"count\":2}]";
+        String entities="[{\"year\":\"2017\",\"month\":10,\"count\":47},{\"year\":2017,\"month\":12,\"count\":4},{\"year\":2018,\"month\":11,\"count\":2},{\"year\":2017,\"month\":10,\"count\":2},{\"year\":2016,\"month\":12,\"count\":2},{\"year\":2016,\"month\":12,\"count\":2}]";
         JSONArray array = JSONArray.parseArray(entities);
         array.forEach(entity -> {
             JSONObject json = (JSONObject)entity;
