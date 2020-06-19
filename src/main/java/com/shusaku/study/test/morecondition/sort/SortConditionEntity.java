@@ -36,4 +36,8 @@ public class SortConditionEntity {
 
     }
 
+    public static void main(String[] args) {
+        
+    }
+
 }
